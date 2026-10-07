@@ -1,5 +1,3 @@
 # Sunrise Alarm privacy policy
 
-Static GitHub Pages site for the Sunrise Alarm Android app.
-
-The policy is based on the current local-first prototype. Before production release, update the publisher's legal registration details, postal address, consent configuration and any production SDK or purchase changes.
+Static GitHub Pages site for the Sunrise Alarm Android app. The policy describes local alarm and sleep data, Google Mobile Ads consent, and store purchases. Update it whenever the app's data practices change.
