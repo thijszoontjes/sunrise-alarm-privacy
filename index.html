@@ -3,98 +3,464 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sunrise Alarm – Privacy Policy</title>
+  <meta name="theme-color" content="#090b14">
+  <meta name="description" content="Wake gently with Sunrise Alarm: a gradual screen sunrise, flexible alarms and optional sleep insights processed on your phone.">
+  <meta property="og:title" content="Sunrise Alarm — a softer way to wake">
+  <meta property="og:description" content="A free light alarm with flexible schedules and optional, on-device sleep insights.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thijszoontjes.github.io/sunrise-alarm-privacy/">
+  <link rel="canonical" href="https://thijszoontjes.github.io/sunrise-alarm-privacy/">
+  <link rel="icon" href="assets/sunrise-alarm-icon.png" type="image/png" sizes="512x512">
+  <link rel="apple-touch-icon" href="assets/sunrise-alarm-icon.png">
+  <title>Sunrise Alarm — a softer way to wake</title>
+  <script>document.documentElement.classList.add('js');</script>
   <style>
-    :root { color-scheme: dark; --bg:#08090d; --panel:#141722; --text:#f4f5f8; --muted:#b5bac8; --accent:#ffb84d; }
-    * { box-sizing:border-box; }
-    body { margin:0; background:linear-gradient(180deg,#08090d,#111529); color:var(--text); font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
-    main { width:min(860px,calc(100% - 32px)); margin:0 auto; padding:56px 0 72px; }
-    header, section { background:rgba(20,23,34,.92); border:1px solid #272d3e; border-radius:18px; padding:28px 30px; margin:18px 0; box-shadow:0 12px 40px rgba(0,0,0,.16); }
-    h1 { margin:0 0 8px; font-size:clamp(30px,5vw,46px); line-height:1.1; }
-    h2 { margin:0 0 10px; color:var(--accent); font-size:22px; }
-    p { margin:10px 0; }
-    .meta, footer { color:var(--muted); }
-    a { color:#ffd38c; }
-    ul { margin:10px 0 0 22px; padding:0; }
-    .notice { border-left:4px solid var(--accent); padding-left:18px; }
-    footer { text-align:center; margin-top:28px; font-size:14px; }
+    :root {
+      color-scheme: dark;
+      --night: #090b14;
+      --line: rgba(211, 220, 255, .12);
+      --text: #f7f4ef;
+      --muted: #b5bacb;
+      --faint: #858ca3;
+      --gold: #ffbf68;
+      --orange: #ff8f46;
+      --max: 1180px;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; background: var(--night); color: var(--text); font: 16px/1.65 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body::before { content: ""; position: fixed; z-index: -1; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 78% 3%, rgba(148, 91, 91, .18), transparent 34%), radial-gradient(ellipse at 12% 28%, rgba(58, 75, 139, .13), transparent 36%), linear-gradient(180deg, #090b14 0%, #0d1020 52%, #090b14 100%); }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .skip-link { position: absolute; top: 8px; left: 8px; z-index: 20; padding: 10px 14px; transform: translateY(-150%); border-radius: 10px; background: white; color: #111; }
+    .skip-link:focus { transform: translateY(0); }
+    .site-header { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid rgba(255,255,255,.07); background: rgba(9, 11, 20, .78); backdrop-filter: blur(18px); }
+    .header-inner { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; font-size: 15px; font-weight: 650; letter-spacing: -.02em; }
+    .brand img { width: 40px; height: 40px; border-radius: 12px; box-shadow: 0 0 25px rgba(255, 158, 76, .2); }
+    .nav { display: flex; align-items: center; gap: clamp(16px, 3vw, 34px); }
+    .nav a, .footer-nav a { color: var(--muted); font-size: 14px; text-decoration: none; transition: color .2s ease; }
+    .nav a:hover, .footer-nav a:hover { color: var(--text); }
+    .nav .nav-cta { color: #1b1420; background: var(--gold); padding: 10px 16px; border-radius: 999px; font-weight: 700; }
+    .nav .nav-cta:hover { color: #1b1420; background: #ffd391; }
+    main { overflow: hidden; }
+    .hero { min-height: 680px; padding: 82px 0 88px; display: grid; grid-template-columns: .92fr 1.08fr; align-items: center; gap: 44px; position: relative; }
+    .hero-copy { position: relative; z-index: 1; max-width: 540px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; margin: 0 0 22px; color: var(--gold); text-transform: uppercase; font-size: 12px; font-weight: 750; letter-spacing: .16em; }
+    .eyebrow::before { content: ""; width: 7px; height: 7px; background: var(--orange); border-radius: 50%; box-shadow: 0 0 16px var(--orange); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 22px; max-width: 600px; font-size: clamp(50px, 7vw, 86px); line-height: .99; letter-spacing: -.065em; font-weight: 640; }
+    h1 em { color: var(--gold); font-style: normal; }
+    .hero-lead { max-width: 490px; margin-bottom: 28px; color: #c2c5d0; font-size: clamp(17px, 2vw, 20px); line-height: 1.7; }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+    .button { min-height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 20px; border: 1px solid transparent; border-radius: 999px; text-decoration: none; font-size: 14px; font-weight: 750; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: #1d1520; background: linear-gradient(110deg, #ffd186, #ff9d5a); box-shadow: 0 8px 28px rgba(255, 143, 70, .2); }
+    .button-primary:hover { background: #ffd89b; }
+    .button-quiet { color: var(--text); border-color: var(--line); background: rgba(255,255,255,.035); }
+    .button-quiet:hover { border-color: rgba(255,255,255,.26); background: rgba(255,255,255,.07); }
+    .trustline { display: flex; flex-wrap: wrap; gap: 10px 18px; margin: 22px 0 0; color: var(--faint); font-size: 13px; }
+    .trustline span::before { content: "✦"; margin-right: 7px; color: var(--gold); font-size: 11px; }
+    .hero-visual { height: min(590px, 58vw); min-height: 440px; position: relative; isolation: isolate; display: flex; align-items: center; justify-content: center; }
+    .hero-visual::before { content: ""; position: absolute; z-index: -1; width: 84%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(255, 158, 91, .28), rgba(119, 100, 180, .12) 42%, transparent 72%); filter: blur(20px); animation: glow 7s ease-in-out infinite alternate; }
+    .hero-art { position: absolute; inset: 6% 0 4%; overflow: hidden; border: 1px solid rgba(255,255,255,.09); border-radius: 34px; background: #11162a url("assets/sunrise-alarm-art.jpg") center 47% / cover no-repeat; box-shadow: 0 35px 100px rgba(0,0,0,.42); }
+    .hero-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,12,22,.24), rgba(10,12,22,.02) 60%, rgba(10,12,22,.25)), linear-gradient(0deg, rgba(9,11,20,.52), transparent 50%); }
+    .phone { position: absolute; width: clamp(178px, 21vw, 252px); overflow: hidden; border: 6px solid #171824; border-radius: 31px; background: #111; box-shadow: 0 22px 65px rgba(0,0,0,.56), 0 0 0 1px rgba(255,255,255,.22); }
+    .phone img { width: 100%; height: auto; }
+    .phone-home { left: 9%; top: 9%; transform: rotate(-6deg); animation: float-left 6.4s ease-in-out infinite; }
+    .phone-report { right: 7%; bottom: 1%; transform: rotate(5deg); animation: float-right 7s ease-in-out infinite; }
+    .hero-caption { position: absolute; z-index: 2; left: 50%; bottom: -4px; width: max-content; max-width: 92%; transform: translateX(-50%); padding: 10px 15px; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; background: rgba(10,12,22,.74); color: #e7e5eb; font-size: 12px; backdrop-filter: blur(12px); }
+    .hero-caption strong { color: var(--gold); font-weight: 650; }
+    .trust-strip { border-block: 1px solid rgba(255,255,255,.07); background: rgba(255,255,255,.018); }
+    .trust-strip-inner { min-height: 74px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px clamp(20px, 6vw, 72px); color: #c3c6d1; font-size: 13px; }
+    .trust-strip-inner span { display: inline-flex; align-items: center; gap: 9px; }
+    .trust-strip-inner b { color: var(--gold); font-size: 15px; }
+    .section { padding: 118px 0; }
+    .section-heading { max-width: 690px; margin: 0 auto 48px; text-align: center; }
+    .section-kicker { margin-bottom: 12px; color: var(--orange); font-size: 12px; font-weight: 750; letter-spacing: .16em; text-transform: uppercase; }
+    h2 { margin-bottom: 16px; font-size: clamp(34px, 5vw, 55px); line-height: 1.08; letter-spacing: -.05em; font-weight: 620; }
+    .section-heading > p:last-child { margin: 0; color: var(--muted); font-size: 17px; }
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .feature-card { min-height: 235px; padding: 28px; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(145deg, rgba(24,29,48,.92), rgba(15,19,33,.86)); }
+    .feature-icon { width: 44px; height: 44px; margin-bottom: 27px; display: grid; place-items: center; border: 1px solid rgba(255,191,104,.2); border-radius: 15px; background: rgba(255,178,95,.09); color: var(--gold); font-size: 20px; }
+    .feature-card h3 { margin-bottom: 9px; font-size: 19px; letter-spacing: -.025em; }
+    .feature-card p { margin-bottom: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .screens-section { padding-top: 90px; background: linear-gradient(180deg, transparent, rgba(48,51,86,.16) 25%, rgba(48,51,86,.12) 75%, transparent); }
+    .screen-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 4vw, 50px); align-items: start; }
+    .screen-card { min-width: 0; text-align: center; }
+    .screen-frame { width: min(100%, 275px); margin: 0 auto 22px; padding: 7px; overflow: hidden; border: 1px solid rgba(236,224,255,.2); border-radius: 32px; background: linear-gradient(145deg, #282637, #121421 56%, #242135); box-shadow: 0 24px 65px rgba(0,0,0,.4); transition: transform .4s ease, box-shadow .4s ease; }
+    .screen-frame:hover { transform: translateY(-7px) rotate(-1deg); box-shadow: 0 32px 75px rgba(0,0,0,.5), 0 0 45px rgba(255,157,92,.09); }
+    .screen-frame img { width: 100%; border-radius: 25px; }
+    .screen-card h3 { margin-bottom: 5px; font-size: 17px; }
+    .screen-card p { max-width: 300px; margin: 0 auto; color: var(--muted); font-size: 13px; }
+    .privacy-feature { padding: 35px; display: grid; grid-template-columns: 1fr .8fr; gap: 40px; align-items: center; border: 1px solid rgba(190,174,255,.18); border-radius: 28px; background: radial-gradient(ellipse at 100% 0, rgba(113,92,169,.18), transparent 46%), linear-gradient(130deg, #151a2c, #101321); }
+    .privacy-feature h2 { max-width: 550px; }
+    .privacy-feature p { color: var(--muted); }
+    .privacy-feature .privacy-bullets { padding: 0; margin: 18px 0 0; list-style: none; display: grid; gap: 12px; color: #e6e5ed; font-size: 14px; }
+    .privacy-bullets li::before { content: "✓"; margin-right: 10px; color: var(--gold); font-weight: 800; }
+    .privacy-note { padding: 26px; border: 1px solid rgba(255,255,255,.1); border-radius: 20px; background: rgba(8,10,18,.42); }
+    .privacy-note span { display: block; margin-bottom: 8px; color: var(--gold); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+    .privacy-note strong { display: block; margin-bottom: 9px; font-size: 21px; line-height: 1.3; }
+    .privacy-note p { margin: 0; font-size: 14px; }
+    .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 900px; margin: 0 auto; }
+    .plan { padding: 30px; border: 1px solid var(--line); border-radius: 23px; background: rgba(20,24,41,.78); }
+    .plan-pro { border-color: rgba(255,191,104,.36); background: linear-gradient(145deg, rgba(49,37,44,.76), rgba(20,24,41,.94)); box-shadow: inset 0 1px rgba(255,255,255,.04); }
+    .plan-tag { margin-bottom: 12px; color: var(--gold); font-size: 11px; font-weight: 800; letter-spacing: .14em; }
+    .plan h3 { margin-bottom: 18px; font-size: 22px; }
+    .plan ul { padding-left: 20px; margin: 0; color: var(--muted); font-size: 14px; }
+    .plan li { margin: 10px 0; padding-left: 3px; }
+    .plan li::marker { color: var(--orange); }
+    .plan-note { margin: 20px 0 0; color: var(--faint); font-size: 12px; }
+    .final-cta { padding: 37px clamp(26px, 6vw, 66px); display: flex; align-items: center; justify-content: space-between; gap: 30px; border: 1px solid rgba(255,191,104,.24); border-radius: 27px; background: radial-gradient(ellipse at 80% 20%, rgba(255,153,80,.18), transparent 48%), linear-gradient(110deg, #171a2a, #171525); }
+    .final-cta h2 { margin-bottom: 7px; font-size: clamp(27px, 4vw, 38px); }
+    .final-cta p { margin: 0; color: var(--muted); font-size: 14px; }
+    .privacy-policy { padding: 105px 0 85px; border-top: 1px solid rgba(255,255,255,.08); background: rgba(6,8,15,.5); }
+    .policy-heading { max-width: 750px; margin: 0 auto 38px; text-align: center; }
+    .policy-heading p:last-child { color: var(--muted); }
+    .policy-content { max-width: 890px; margin: 0 auto; }
+    .policy-content > section { padding: 24px 27px; margin: 12px 0; border: 1px solid rgba(211,220,255,.1); border-radius: 17px; background: rgba(20,24,39,.63); }
+    .policy-content h3 { margin-bottom: 8px; color: #ffd18e; font-size: 17px; line-height: 1.35; letter-spacing: -.015em; font-weight: 650; }
+    .policy-content p { margin: 9px 0 0; color: #c3c7d4; font-size: 14px; line-height: 1.75; }
+    .policy-content a { color: #ffd18e; text-underline-offset: 3px; }
+    .policy-date { color: var(--faint); font-size: 13px; }
+    .site-footer { padding: 30px 0 28px; border-top: 1px solid rgba(255,255,255,.08); color: var(--faint); font-size: 12px; }
+    .footer-top, .footer-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; }
+    .footer-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--muted); text-decoration: none; font-weight: 650; }
+    .footer-brand img { width: 28px; height: 28px; border-radius: 8px; }
+    .footer-nav { display: flex; gap: 22px; }
+    .footer-bottom { padding-top: 18px; margin-top: 18px; border-top: 1px solid rgba(255,255,255,.06); }
+    .footer-bottom a { color: var(--muted); text-decoration: none; }
+    .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); transition-delay: var(--delay, 0ms); }
+    .js .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @keyframes glow { from { opacity: .7; transform: scale(.93); } to { opacity: 1; transform: scale(1.08); } }
+    @keyframes float-left { 0%, 100% { margin-top: 0; } 50% { margin-top: -15px; } }
+    @keyframes float-right { 0%, 100% { margin-bottom: 0; } 50% { margin-bottom: 17px; } }
+    @media (max-width: 850px) {
+      .hero { min-height: auto; padding-top: 70px; grid-template-columns: 1fr; gap: 18px; }
+      .hero-copy { max-width: 680px; }
+      .hero-visual { width: min(100%, 680px); height: 530px; min-height: 0; margin: 0 auto; }
+      .phone { width: clamp(190px, 32vw, 248px); }
+      .phone-home { left: 13%; }
+      .phone-report { right: 12%; }
+      .privacy-feature { grid-template-columns: 1fr; gap: 16px; }
+    }
+    @media (max-width: 620px) {
+      .wrap { width: min(var(--max), calc(100% - 34px)); }
+      .header-inner { min-height: 68px; gap: 10px; }
+      .brand { gap: 8px; font-size: 13px; }
+      .brand img { width: 34px; height: 34px; }
+      .nav { gap: 12px; }
+      .nav a { font-size: 12px; }
+      .nav .nav-cta { padding: 8px 11px; }
+      .nav a:first-child, .nav a:nth-child(2) { display: none; }
+      .hero { padding: 58px 0 50px; }
+      h1 { font-size: clamp(48px, 13vw, 72px); }
+      .hero-lead { font-size: 16px; }
+      .button { min-height: 48px; padding-inline: 16px; font-size: 13px; }
+      .hero-visual { height: 420px; width: calc(100% + 14px); margin-left: -7px; }
+      .hero-art { inset: 6% 0 4%; border-radius: 25px; }
+      .phone { width: clamp(150px, 43vw, 205px); border-width: 5px; border-radius: 25px; }
+      .phone img { border-radius: 19px; }
+      .phone-home { left: 7%; top: 12%; }
+      .phone-report { right: 6%; bottom: 1%; }
+      .hero-caption { bottom: -4px; font-size: 10px; }
+      .trust-strip-inner { justify-content: flex-start; gap: 9px 16px; padding-block: 17px; font-size: 11px; }
+      .trust-strip-inner span { width: calc(50% - 10px); }
+      .section { padding: 78px 0; }
+      .section-heading { margin-bottom: 32px; }
+      .section-heading > p:last-child { font-size: 15px; }
+      .feature-grid { grid-template-columns: 1fr; gap: 10px; }
+      .feature-card { min-height: 0; padding: 23px; }
+      .feature-icon { margin-bottom: 18px; }
+      .screen-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 25px 12px; }
+      .screen-card:last-child { grid-column: 1 / -1; }
+      .screen-frame { padding: 5px; border-radius: 24px; }
+      .screen-frame img { border-radius: 19px; }
+      .screen-card h3 { font-size: 15px; }
+      .screen-card p { font-size: 12px; }
+      .privacy-feature { padding: 24px 20px; border-radius: 22px; }
+      .privacy-note { padding: 20px; }
+      .plans { grid-template-columns: 1fr; }
+      .plan { padding: 24px; }
+      .final-cta { align-items: flex-start; flex-direction: column; padding: 28px 22px; }
+      .privacy-policy { padding: 76px 0 60px; }
+      .policy-content > section { padding: 20px; }
+      .policy-content p { font-size: 13px; }
+      .footer-top, .footer-bottom { align-items: flex-start; flex-direction: column; }
+      .footer-nav { gap: 18px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
   </style>
 </head>
 <body>
-<main>
-  <header>
-    <h1>Sunrise Alarm</h1>
-    <p class="meta"><strong>Privacy Policy</strong> · Last updated: 22 October 2026</p>
-    <p>Sunrise Alarm is published by Lunava Software. This policy explains what information stays on your device and what may be processed by third-party services. Privacy questions, deletion requests and complaints can be sent to <a href="mailto:lunavasoftware@gmail.com">lunavasoftware@gmail.com</a>.</p>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="Sunrise Alarm home">
+        <img src="assets/sunrise-alarm-icon.png" alt="" width="512" height="512">
+        <span>Sunrise Alarm</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#screens">Screens</a>
+        <a href="#privacy">Privacy</a>
+        <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.lunavasoftware.sunrisealarm" target="_blank" rel="noopener noreferrer">Get the app <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
   </header>
 
-  <section>
-    <h2>1. Who is responsible?</h2>
+  <main id="main">
+    <div class="wrap hero" id="top">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Gentler mornings · Android</p>
+        <h1>A softer way <em>to wake.</em></h1>
+        <p class="hero-lead">Let a warm screen sunrise ease you into the day. Set the alarm that fits your morning, then keep optional sleep insights on your phone.</p>
+        <div class="actions">
+          <a class="button button-primary" href="https://play.google.com/store/apps/details?id=com.lunavasoftware.sunrisealarm" target="_blank" rel="noopener noreferrer">Get Sunrise Alarm on Google Play <span aria-hidden="true">↗</span></a>
+          <a class="button button-quiet" href="#features">See how it works <span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="trustline"><span>Free light alarm</span><span>No account</span><span>Sleep estimates stay on your phone</span></p>
+      </div>
+      <div class="hero-visual" role="group" aria-label="Sunrise Alarm home and sleep report screens">
+        <div class="hero-art" aria-hidden="true"></div>
+        <div class="phone phone-home"><img src="assets/sunrise-alarm-home-emulator.png" alt="Sunrise Alarm home screen with an upcoming wake-up and sleep mode" width="1080" height="2400" fetchpriority="high"></div>
+        <div class="phone phone-report"><img src="assets/sunrise-sleep-report-emulator.png" alt="Example sleep report with estimated sleep stages and a sleep score" width="1080" height="2400" fetchpriority="high"></div>
+        <div class="hero-caption"><strong>A calmer start</strong> · one morning at a time</div>
+      </div>
+    </div>
+
+    <div class="trust-strip" aria-label="At a glance">
+      <div class="wrap trust-strip-inner">
+        <span><b>✦</b> Gradual screen sunrise</span>
+        <span><b>◷</b> Multiple alarms and schedules</span>
+        <span><b>⌂</b> Optional sleep tracking</span>
+        <span><b>⌁</b> Private, on-device estimates</span>
+      </div>
+    </div>
+
+    <section class="section wrap" id="features" aria-labelledby="features-title">
+      <div class="section-heading reveal">
+        <p class="section-kicker">Your morning, your pace</p>
+        <h2 id="features-title">A little light before the day begins.</h2>
+        <p>Keep your wake-up simple, shape it around your week, and preview the sunrise before you settle in.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card reveal">
+          <div class="feature-icon" aria-hidden="true">☼</div>
+          <h3>Wake with a sunrise</h3>
+          <p>Your screen brightens gradually toward the time you set. Choose a sunrise duration and alarm sound that feel right for you.</p>
+        </article>
+        <article class="feature-card reveal" style="--delay: 90ms">
+          <div class="feature-icon" aria-hidden="true">◷</div>
+          <h3>Make it fit your week</h3>
+          <p>Set several alarms for different days and routines. Snooze, a 20-second sunrise preview and a separate back-up sound are built in.</p>
+        </article>
+        <article class="feature-card reveal" style="--delay: 180ms">
+          <div class="feature-icon" aria-hidden="true">✧</div>
+          <h3>Sleep insights, if you want</h3>
+          <p>Turn on optional tracking for estimated sleep stages, time asleep, breathing rate and a morning score—processed on your phone.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section screens-section" id="screens" aria-labelledby="screens-title">
+      <div class="wrap">
+        <div class="section-heading reveal">
+          <p class="section-kicker">A look inside</p>
+          <h2 id="screens-title">Quiet screens for winding down and waking up.</h2>
+          <p>Take a look at the alarm, your saved schedules and the optional sleep report.</p>
+        </div>
+        <div class="screen-grid">
+          <article class="screen-card reveal">
+            <div class="screen-frame"><img src="assets/sunrise-alarm-home-emulator.png" alt="Sunrise Alarm home screen showing a scheduled wake-up and Sleep Mode button" width="1080" height="2400" loading="lazy" decoding="async"></div>
+            <h3>Your next session</h3>
+            <p>See the next alarm and start Sleep Mode when you are ready.</p>
+          </article>
+          <article class="screen-card reveal" style="--delay: 100ms">
+            <div class="screen-frame"><img src="assets/sunrise-alarm-2.png" alt="Sunrise Alarm screen showing saved alarms" width="266" height="592" loading="lazy" decoding="async"></div>
+            <h3>Alarms that fit your week</h3>
+            <p>Keep more than one schedule ready for the days ahead.</p>
+          </article>
+          <article class="screen-card reveal" style="--delay: 200ms">
+            <div class="screen-frame"><img src="assets/sunrise-sleep-report-emulator.png" alt="Illustrative sleep report showing estimated stages and a sample score" width="1080" height="2400" loading="lazy" decoding="async"></div>
+            <h3>Optional sleep report</h3>
+            <p>See estimates and patterns from nights you choose to track.</p>
+          </article>
+        </div>
+        <p class="plan-note" style="text-align:center; margin-top:28px">Sleep report screens use sample values for illustration. Sleep estimates are not medical measurements.</p>
+      </div>
+    </section>
+
+    <section class="section wrap" aria-labelledby="on-device-title">
+      <div class="privacy-feature reveal">
+        <div>
+          <p class="section-kicker">Your sleep stays yours</p>
+          <h2 id="on-device-title">Sleep tracking is optional. Your sleep data stays on your phone.</h2>
+          <p>When you turn Sleep Tracking on, the app processes live microphone samples on your device to estimate sleep patterns. Raw audio is not stored or uploaded, and you can use the light alarm without tracking.</p>
+          <ul class="privacy-bullets">
+            <li>No account or cloud sleep database</li>
+            <li>Microphone used only for optional Sleep Mode tracking</li>
+            <li>Three successful tracking nights included</li>
+          </ul>
+        </div>
+        <aside class="privacy-note">
+          <span>Sleep insights</span>
+          <strong>Personal estimates, not medical measurements.</strong>
+          <p>See what is stored, which permissions are used, how ads work and how to delete local data in the full privacy policy below.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section wrap" aria-labelledby="plans-title">
+      <div class="section-heading reveal">
+        <p class="section-kicker">Start free. Choose what suits you.</p>
+        <h2 id="plans-title">A light alarm that stays free.</h2>
+        <p>Sleep tracking is optional. Sunrise Pro adds more ways to personalise the app and continue tracking.</p>
+      </div>
+      <div class="plans">
+        <article class="plan reveal">
+          <p class="plan-tag">FREE · ALWAYS</p>
+          <h3>A gentle wake-up</h3>
+          <ul>
+            <li>Gradual screen sunrise, alarm sound and snooze.</li>
+            <li>Multiple alarms, a sunrise preview and a separate back-up sound.</li>
+            <li>Optional sleep tracking for your first three successful nights.</li>
+            <li>Keep viewing sleep records you have already made.</li>
+          </ul>
+        </article>
+        <article class="plan plan-pro reveal" style="--delay: 100ms">
+          <p class="plan-tag">SUNRISE PRO · OPTIONAL</p>
+          <h3>More room to make it yours</h3>
+          <ul>
+            <li>Continue optional sleep tracking after the first three successful nights.</li>
+            <li>Unlock premium themes and sounds.</li>
+            <li>Remove ads while Pro is active.</li>
+            <li>Choose from the purchase options shown in Google Play.</li>
+          </ul>
+          <p class="plan-note">Google Play shows the current price, billing period and renewal terms before purchase.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap" aria-label="Get Sunrise Alarm">
+      <div class="final-cta reveal">
+        <div>
+          <h2>Make tomorrow morning a little gentler.</h2>
+          <p>The light alarm is free. Sleep tracking is optional.</p>
+        </div>
+        <a class="button button-primary" href="https://play.google.com/store/apps/details?id=com.lunavasoftware.sunrisealarm" target="_blank" rel="noopener noreferrer">View Sunrise Alarm on Google Play <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="privacy-policy" id="privacy" aria-labelledby="privacy-title">
+      <div class="wrap">
+        <div class="policy-heading">
+          <p class="section-kicker">Your information</p>
+          <h2 id="privacy-title">Privacy policy</h2>
+          <p>How Sunrise Alarm handles information, permissions, advertising and purchases.</p>
+          <p class="policy-date"><strong>Last updated:</strong> 22 October 2026</p>
+        </div>
+        <div class="policy-content">
+            <section>
+    <h3>1. Who is responsible?</h3>
     <p>Sunrise Alarm is published by Lunava Software. Contact <a href="mailto:lunavasoftware@gmail.com">lunavasoftware@gmail.com</a> with privacy questions, deletion requests or complaints.</p>
   </section>
-
   <section>
-    <h2>2. Information stored on your device</h2>
+    <h3>2. Information stored on your device</h3>
     <p>The app stores alarm times, repeat days, selected sounds, theme choices, sleep-tracking settings, local purchase entitlements and sleep records on this phone. A sleep record may include when Sleep Mode started and stopped, when the alarm sounded, your morning rating and, when tracking was enabled, estimated sleep stages, a sleep score and a breathing estimate. The app also stores a short list of technical alarm events, such as “alarm scheduled” or “back-up sound started”.</p>
     <p>Sunrise Alarm has no account, backend, analytics service or cloud sleep database. The app does not upload its local sleep database or alarm events and does not store raw microphone recordings. You can view and choose to share alarm events from Settings.</p>
   </section>
-
   <section>
-    <h2>3. Microphone and sleep tracking</h2>
+    <h3>3. Microphone and sleep tracking</h3>
     <p>Sleep Tracking is optional and starts only when you turn it on. After you enable it and grant microphone permission, Sleep Mode processes live microphone samples on this device to estimate breathing rhythm, movement and noise. About every 15 seconds, it keeps a few derived numbers such as sound level, the loudest peak and breathing rhythm; these interval numbers are deleted after that night's analysis. The app uses the results to estimate sleep stages and a sleep score on this device.</p>
     <p>Raw audio is processed in memory and is not stored or uploaded. The estimates are not medical measurements. The first three successful tracking nights are free; recording further nights needs Sunrise Pro. Nights you already recorded remain viewable.</p>
   </section>
-
   <section>
-    <h2>4. Advertising</h2>
+    <h3>4. Advertising</h3>
     <p>Ads are requested only after Google's User Messaging Platform has updated your consent choices and only when the matching AdMob identifiers are configured. Google Mobile Ads may process device or advertising identifiers, your IP address, coarse location inferred from network data, diagnostics, device information and ad-delivery information under Google's terms. Ads appear only on the home screen, never in Sleep Mode or while you stop the alarm.</p>
     <p>Ads are not requested when your consent choices do not allow them or after you buy Sunrise Pro or the earlier Remove Ads purchase. See <a href="https://policies.google.com/privacy" rel="noopener noreferrer">Google's Privacy Policy</a> for details about Google's processing.</p>
   </section>
-
   <section>
-    <h2>5. Purchases</h2>
+    <h3>5. Purchases</h3>
     <p>Sunrise Pro is available as a monthly or yearly auto-renewing subscription, or as a lifetime one-time purchase. Pro removes ads, unlocks premium themes and sounds, and allows unlimited nights with sleep tracking. The current localized price, billing period and renewal terms are shown by Google Play before you confirm a purchase. Monthly and yearly subscriptions renew automatically unless you cancel them in Google Play before the next billing period. The lifetime option is paid once and does not renew.</p>
     <p>Remove Ads is a separate one-time purchase that removes ads but does not unlock other Sunrise Pro features. Earlier one-time purchases, including Blue Dawn and premium sounds, keep working. Google Play processes payments, renewals, cancellations and refunds. Sunrise Alarm does not receive or store your card number. The app stores the entitlement needed to unlock a purchased feature and checks the store account to restore it. Pending payments do not unlock features.</p>
   </section>
-
   <section>
-    <h2>6. Permissions</h2>
+    <h3>6. Permissions</h3>
     <p>Notifications are used for alarm reminders. Exact-alarm access is used on supported Android devices for a wake-up alarm you create. Optional Sleep Tracking requests microphone access when Sleep Mode starts and processes audio locally. Brightness, wake-lock and orientation access support Sleep Mode. You can deny permissions, but the related feature may not work.</p>
     <p>The app may ask Google Play to show its in-app review dialog after a few completed nights. It never asks while you are waking up and does not filter who is sent to the store.</p>
   </section>
-
   <section>
-    <h2>7. Sharing and third parties</h2>
+    <h3>7. Sharing and third parties</h3>
     <p>Sunrise Alarm does not share the local sleep database. Alarm events remain on your device unless you choose to share them from Settings. Google Mobile Ads and Google Play or Apple are third-party services for advertising and purchases. They may process information under their own terms and outside your country, subject to their safeguards. Sunrise Alarm does not intend to sell sleep metrics.</p>
   </section>
-
   <section>
-    <h2>8. Legal basis and your rights</h2>
+    <h3>8. Legal basis and your rights</h3>
     <p>Local alarm and sleep features are provided at your request. You can turn off optional sleep tracking and advertising choices where the app provides that control. Depending on where you live, you may have rights to access, correct or delete information, restrict or object to processing, and withdraw consent. Email <a href="mailto:lunavasoftware@gmail.com">lunavasoftware@gmail.com</a> to exercise your rights. You may also contact your local data-protection authority.</p>
   </section>
-
   <section>
-    <h2>9. Retention and deletion</h2>
+    <h3>9. Retention and deletion</h3>
     <p>Local data remains on your device until you delete it in Settings, reset the app or uninstall it. Device backups or operating-system migration may retain app data according to your device settings. Email the contact above for help with data questions. Purchase entitlements are controlled by Google Play or Apple and may be restorable from the corresponding store account after reinstalling.</p>
   </section>
-
   <section>
-    <h2>10. Security</h2>
+    <h3>10. Security</h3>
     <p>The app uses parameterized local database queries and keeps sleep processing on your device in the current build. No security measure is perfect. Keep your operating system and app updated, and do not use prototype sleep estimates for security or medical decisions.</p>
   </section>
-
   <section>
-    <h2>11. Children</h2>
+    <h3>11. Children</h3>
     <p>Sunrise Alarm is not directed at children and does not knowingly collect children's personal information. If you believe a child has provided personal information, contact <a href="mailto:lunavasoftware@gmail.com">lunavasoftware@gmail.com</a>.</p>
   </section>
-
   <section>
-    <h2>12. Changes and contact</h2>
+    <h3>12. Changes and contact</h3>
     <p>This policy may change when features, advertising partners or store integrations change. The date at the top identifies the current version.</p>
     <p>Contact: <a href="mailto:lunavasoftware@gmail.com">lunavasoftware@gmail.com</a>.</p>
   </section>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <footer>Sunrise Alarm · Lunava Software · <a href="mailto:lunavasoftware@gmail.com">lunavasoftware@gmail.com</a></footer>
-</main>
+  <footer class="site-footer">
+    <div class="wrap footer-top">
+      <a class="footer-brand" href="#top"><img src="assets/sunrise-alarm-icon.png" alt="" width="512" height="512">Sunrise Alarm</a>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#features">Features</a>
+        <a href="#screens">Screens</a>
+        <a href="#privacy">Privacy policy</a>
+        <a href="mailto:lunavasoftware@gmail.com">Contact</a>
+      </nav>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>Sunrise Alarm · Lunava Software · The Netherlands</span>
+      <span><a href="https://thijszoontjes.github.io/lunava-software/">Lunava Software</a> · <a href="mailto:lunavasoftware@gmail.com">lunavasoftware@gmail.com</a></span>
+      <span>© 2026</span>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      var items = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        items.forEach(function (item) { item.classList.add('is-visible'); });
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+      items.forEach(function (item) { observer.observe(item); });
+    }());
+  </script>
 </body>
 </html>
